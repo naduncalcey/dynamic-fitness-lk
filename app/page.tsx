@@ -2,7 +2,13 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { MenuIcon } from "lucide-react";
+import {
+  Copyright,
+  Facebook,
+  Instagram,
+  Linkedin,
+  MenuIcon,
+} from "lucide-react";
 
 export default function Home() {
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
@@ -44,21 +50,14 @@ export default function Home() {
             {isPopoverVisible && (
               <div className="popover">
                 <ul>
-                  
                   <li className="link">
-                    <a href=".." >
-                      Home
-                    </a>
+                    <a href="..">Home</a>
                   </li>
                   <li className="link">
-                    <a href=".." >
-                      Services
-                    </a>
+                    <a href="..">Services</a>
                   </li>
                   <li className="link">
-                    <a href=".." >
-                      Packages
-                    </a>
+                    <a href="..">Packages</a>
                   </li>
                   <li className="link">
                     <a href=".." className="link">
@@ -71,6 +70,48 @@ export default function Home() {
           </div>
         </div>
       </nav>
+      <footer className="footer">
+        <div className="container">
+          <div className="sub-container-1">
+            <div className="instagram">
+              <a href="..">
+                <Instagram className="instagram-icon" />
+              </a>
+            </div>
+            <div className="linkedin">
+              <a href="..">
+                <Linkedin />
+              </a>
+            </div>
+            <div className="facebook">
+              <a>
+                <Facebook />
+              </a>
+            </div>
+          </div>
+
+          <div className="sub-container-2">
+            <ul className="section-1">
+              <li>©2024 Lakindu</li>
+              <li>
+                <a href="..">Section</a>
+              </li>
+              <li>
+                <a href="..">Terms</a>
+              </li>
+              <li>
+                <a href="..">Privacy</a>
+              </li>
+              <li>
+                <a href="..">Home</a>
+              </li>
+              <li>
+                <a href="..">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
