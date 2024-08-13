@@ -70,6 +70,41 @@ export default function Home() {
           </div>
         </div>
       </nav>
+
+      {/* service section */}
+      <section className="services-section">
+        <div className="container">
+          <div className="header">
+            <h1>Our Services & Solutions </h1>
+          </div>
+          <div className="services-types">
+            <div className="facilities card">
+              <h1 className="facilities-header">Gym Facilities</h1>
+              <p className="facilities-para ">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                vel egestas dolor, nec dignissim metus.
+              </p>
+            </div>
+
+            <div className="personal-training-type card">
+              <h1 className="personal-training-header ">Personal Traning</h1>
+              <p className="personal-training-para">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                vel egestas dolor, nec dignissim metus.
+              </p>
+            </div>
+
+            <div className="packages-type card">
+              <h1 className="packages-header">Our Packages</h1>
+              <p className="packages-para">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                vel egestas dolor, nec dignissim metus.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="footer">
         <div className="container">
           <div className="sub-container-1">
