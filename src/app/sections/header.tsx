@@ -1,9 +1,14 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { ReactGoogleReviews } from "react-google-reviews";
+import "react-google-reviews/dist/index.css";
 
 const Header = () => {
+  const featurableWidgetId = "606a865e-ea5f-4c1f-a49f-c63b5ece55c8";
   return (
     <div className="min-h-screen relative">
       {/* Background Image */}
@@ -55,13 +60,21 @@ const Header = () => {
             <h1 className="text-3xl lg:text-5xl font-bold font-sans !leading-[120%]">
               Crush your health and fitness goals in no time
             </h1>
-            <p className="text-sm lg:text-lg mt-8 mb-6 font-poppins">
+            <p className="text-sm lg:text-lg mt-8 mb-6 font-poppins max-w-[540px] mx-auto">
               It doesn’t matter if your goal is to get stronger, burn fat, or to
               just stay fit our world class coaches will guide you every step of
               the way.
             </p>
             <div>
-                <Button className="rounded-full" size="lg">Membership Packages</Button>
+              <Button className="rounded-full" size="lg">
+                Membership Packages
+              </Button>
+            </div>
+            <div className="mt-10">
+              <ReactGoogleReviews
+                layout="badge"
+                featurableId={featurableWidgetId}
+              />
             </div>
           </div>
         </div>
