@@ -67,7 +67,7 @@ body {
     @apply border-border;
   }
   html {
-    @apply bg-gray-900;
+    @apply bg-black;
   }
   body {
     @apply bg-background text-foreground;
