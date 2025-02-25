@@ -1,252 +1,215 @@
 "use client";
+
+import { useState } from "react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 
-const includedFeatures = [
-  "Full gym access",
-  "Free schdeule for beginners",
-  "Personal training discounts",
-  "Free online community access",
+type PricingTier = {
+  name: string;
+  id: string;
+  href: string;
+  price: string;
+  description: string;
+  features: string[];
+  mostPopular: boolean;
+};
+
+const individualPricing: PricingTier[] = [
+  {
+    name: "Monthly",
+    id: "tier-individual-monthly",
+    href: "#",
+    price: "LKR 3500",
+    description: "Monthly plan for individuals.",
+    features: ["Full gym access", "Free training schedule"],
+    mostPopular: false,
+  },
+  {
+    name: "3 Months",
+    id: "tier-individual-3months",
+    href: "#",
+    price: "LKR 9000",
+    description: "3-month plan for individuals.",
+    features: ["Full gym access", "Free training schedule"],
+    mostPopular: false,
+  },
+  {
+    name: "6 Months",
+    id: "tier-individual-6months",
+    href: "#",
+    price: "LKR 15000",
+    description: "6-month plan for individuals.",
+    features: ["Full gym access", "Free training schedule"],
+    mostPopular: true,
+  },
+  {
+    name: "12 Months",
+    id: "tier-individual-12months",
+    href: "#",
+    price: "LKR 25000",
+    description: "12-month plan for individuals.",
+    features: ["Full gym access", "Free training schedule"],
+    mostPopular: false,
+  },
 ];
 
-export default function Pricing() {
+const couplePricing: PricingTier[] = [
+  {
+    name: "6 Months",
+    id: "tier-couple-6months",
+    href: "#",
+    price: "LKR 22000",
+    description: "6-month plan for couples.",
+    features: ["Full gym access", "Free training schedule"],
+    mostPopular: false,
+  },
+  {
+    name: "12 Months",
+    id: "tier-couple-12months",
+    href: "#",
+    price: "LKR 35000",
+    description: "12-month plan for couples.",
+    features: ["Full gym access", "Free training schedule"],
+    mostPopular: true,
+  },
+];
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Example() {
+  const [tab, setTab] = useState<"individual" | "couple">("individual");
+
   return (
     <div className="bg-gray-950 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl sm:text-center">
-          <h2 className="text-pretty font-poppins text-4xl font-semibold tracking-tight text-white sm:text-balance sm:text-6xl">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="mt-2 text-balance text-5xl font-semibold tracking-tight text-white sm:text-6xl font-poppins">
             Simple no-tricks pricing
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-pretty text-md font-medium text-gray-400 sm:text-xl/8">
-            Experience fitness freedom with our subscription plans. Make your
-            fitness journey dynamic as you like.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 bg-black ring-gray-900 shadow-xl sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-          <div className="p-8 sm:p-10 lg:flex-auto">
-            <h3 className="text-3xl font-semibold tracking-tight text-gray-300">
-              1 Month membership
-            </h3>
-            <p className="mt-6 text-base/7 text-gray-400">
-              Experience fitness freedom with our lifetime membership – a
-              one-time investment in your health journey.
-            </p>
-            <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm/6 font-semibold text-red-600">
-                What’s included
-              </h4>
-              <div className="h-px flex-auto bg-gray-100" />
-            </div>
-            <ul
-              role="list"
-              className="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6"
-            >
-              {includedFeatures.map((feature) => (
-                <li key={feature} className="flex gap-x-3 text-gray-400">
-                  <CheckIcon
-                    aria-hidden="true"
-                    className="h-6 w-5 flex-none text-red-600"
-                  />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:shrink-0">
-            <div className="rounded-2xl bg-gray-900 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
-              <div className="mx-auto max-w-xs px-8">
-                <p className="text-base font-semibold text-gray-400">
-                  Pay monthly
-                </p>
-                <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                  <span className="text-5xl font-semibold tracking-tight text-white">
-                    Rs 3500
-                  </span>
-                  <span className="text-sm/6 font-semibold tracking-wide text-gray-600">
-                    LKR
-                  </span>
-                </p>
-                <a
-                  aria-disabled="true"
-                  className="mt-10 block w-full rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:bg-gray-500"
-                >
-                  Get access
-                </a>
-                <p className="mt-6 text-xs/5 text-gray-600">
-                  Invoices and receipts available for easy company reimbursement
-                </p>
-              </div>
-            </div>
-          </div>
+        <p className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-400 sm:text-xl/8">
+        Experience fitness freedom with our subscription plans. Make your fitness journey dynamic as you like.
+        </p>
+        <div className="flex justify-center w-full">
+        <div className="mt-8 flex justify-center border border-red-600 w-fit rounded-lg p-1">
+          <button
+            onClick={() => setTab("individual")}
+            className={classNames(
+              tab === "individual"
+                ? "bg-red-600 text-white"
+                : "text-red-600 font-medium",
+              "px-4 py-2 rounded-md"
+            )}
+          >
+            Individual
+          </button>
+          <button
+            onClick={() => setTab("couple")}
+            className={classNames(
+              tab === "couple" ? "bg-red-600 text-white" : "text-red-600 font-medium",
+              "ml-4 px-4 py-2 rounded-md"
+            )}
+          >
+            Couple
+          </button>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 bg-black ring-gray-900 shadow-xl sm:mt-10 lg:mx-0 lg:flex lg:max-w-none">
-          <div className="p-8 sm:p-10 lg:flex-auto">
-            <h3 className="text-3xl font-semibold tracking-tight text-gray-300">
-              3 Month membership
-            </h3>
-            <p className="mt-6 text-base/7 text-gray-400">
-              Experience fitness freedom with our 3 months subscription package.
-            </p>
-            <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm/6 font-semibold text-red-600">
-                What’s included
-              </h4>
-              <div className="h-px flex-auto bg-gray-100" />
-            </div>
-            <ul
-              role="list"
-              className="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6"
-            >
-              {includedFeatures.map((feature) => (
-                <li key={feature} className="flex gap-x-3 text-gray-400">
-                  <CheckIcon
-                    aria-hidden="true"
-                    className="h-6 w-5 flex-none text-red-600"
-                  />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:shrink-0">
-            <div className="rounded-2xl bg-gray-900 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
-              <div className="mx-auto max-w-xs px-8">
-                <p className="text-base font-semibold text-gray-400">
-                  Pay for 3 months
-                </p>
-                <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                  <span className="text-5xl font-semibold tracking-tight text-white">
-                    Rs 9000
-                  </span>
-                  <span className="text-sm/6 font-semibold tracking-wide text-gray-600">
-                    LKR
-                  </span>
-                </p>
-                <a
-                  aria-disabled="true"
-                  className="mt-10 block w-full rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:bg-gray-500"
-                >
-                  Get access
-                </a>
-                <p className="mt-6 text-xs/5 text-gray-600">
-                  Invoices and receipts available for easy company reimbursement
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 bg-black ring-gray-900 shadow-xl sm:mt-10 lg:mx-0 lg:flex lg:max-w-none">
-          <div className="p-8 sm:p-10 lg:flex-auto">
-            <h3 className="text-3xl font-semibold tracking-tight text-gray-300">
-              6 Months membership
-            </h3>
-            <p className="mt-6 text-base/7 text-gray-400">
-              Experience fitness freedom with our lifetime membership – a
-              one-time investment in your health journey.
-            </p>
-            <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm/6 font-semibold text-red-600">
-                What’s included
-              </h4>
-              <div className="h-px flex-auto bg-gray-100" />
-            </div>
-            <ul
-              role="list"
-              className="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6"
-            >
-              {includedFeatures.map((feature) => (
-                <li key={feature} className="flex gap-x-3 text-gray-400">
-                  <CheckIcon
-                    aria-hidden="true"
-                    className="h-6 w-5 flex-none text-red-600"
-                  />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:shrink-0">
-            <div className="rounded-2xl bg-gray-900 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
-              <div className="mx-auto max-w-xs px-8">
-                <p className="text-base font-semibold text-gray-400">
-                  Pay for 6 months
-                </p>
-                <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                  <span className="text-5xl font-semibold tracking-tight text-white">
-                    Rs 15000
-                  </span>
-                  <span className="text-sm/6 font-semibold tracking-wide text-gray-600">
-                    LKR
-                  </span>
-                </p>
-                <a
-                  aria-disabled="true"
-                  className="mt-10 block w-full rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:bg-gray-500"
+        <div className="flex justify-center mt-10">
+          {tab === "individual" && (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {individualPricing.map((tier: PricingTier) => (
+                <div
+                  key={tier.id}
+                  className={classNames(
+                    tier.mostPopular
+                      ? "ring-2 ring-red-600"
+                      : "ring-1 ring-gray-500",
+                    "rounded-3xl p-8 bg-black"
+                  )}
                 >
-                  Get access
-                </a>
-                <p className="mt-6 text-xs/5 text-gray-600">
-                  Invoices and receipts available for easy company reimbursement
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 bg-black ring-gray-900 shadow-xl sm:mt-10 lg:mx-0 lg:flex lg:max-w-none">
-          <div className="p-8 sm:p-10 lg:flex-auto">
-            <h3 className="text-3xl font-semibold tracking-tight text-gray-300">
-              Annual membership
-            </h3>
-            <p className="mt-6 text-base/7 text-gray-400">
-              Experience fitness freedom with our lifetime membership – a
-              one-time investment in your health journey.
-            </p>
-            <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm/6 font-semibold text-red-600">
-                What’s included
-              </h4>
-              <div className="h-px flex-auto bg-gray-100" />
-            </div>
-            <ul
-              role="list"
-              className="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6"
-            >
-              {includedFeatures.map((feature) => (
-                <li key={feature} className="flex gap-x-3 text-gray-400">
-                  <CheckIcon
-                    aria-hidden="true"
-                    className="h-6 w-5 flex-none text-red-600"
-                  />
-                  {feature}
-                </li>
+                  <h3
+                    id={tier.id}
+                    className={classNames(
+                      tier.mostPopular ? "text-red-600" : "text-gray-400",
+                      "text-lg/8 font-semibold"
+                    )}
+                  >
+                    {tier.name}
+                  </h3>
+                  <p className="mt-4 text-sm/6 text-gray-300">
+                    {tier.description}
+                  </p>
+                  <p className="mt-6 flex items-baseline gap-x-1">
+                    <span className="text-4xl font-semibold tracking-tight text-white">
+                      {tier.price}
+                    </span>
+                  </p>
+                  <ul
+                    role="list"
+                    className="mt-8 space-y-3 text-sm/6 text-gray-600"
+                  >
+                    {tier.features.map((feature: string) => (
+                      <li key={feature} className="flex gap-x-3">
+                        <CheckIcon
+                          aria-hidden="true"
+                          className="h-6 w-5 flex-none text-red-600"
+                        />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
-          </div>
-          <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:shrink-0">
-            <div className="rounded-2xl bg-gray-900 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
-              <div className="mx-auto max-w-xs px-8">
-                <p className="text-base font-semibold text-gray-400">
-                  Pay yearly
-                </p>
-                <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                  <span className="text-5xl font-semibold tracking-tight text-white">
-                    Rs 25000
-                  </span>
-                  <span className="text-sm/6 font-semibold tracking-wide text-gray-600">
-                    LKR
-                  </span>
-                </p>
-                <a
-                  aria-disabled="true"
-                  className="mt-10 block w-full rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:bg-gray-500"
-                >
-                  Get access
-                </a>
-                <p className="mt-6 text-xs/5 text-gray-600">
-                  Invoices and receipts available for easy company reimbursement
-                </p>
-              </div>
             </div>
-          </div>
+          )}
+          {tab === "couple" && (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 justify-content">
+              {couplePricing.map((tier: PricingTier) => (
+                <div
+                  key={tier.id}
+                  className={classNames(
+                    tier.mostPopular
+                      ? "ring-2 ring-red-600"
+                      : "ring-1 ring-gray-500",
+                    "rounded-3xl p-8"
+                  )}
+                >
+                  <h3
+                    id={tier.id}
+                    className={classNames(
+                      tier.mostPopular ? "text-red-600" : "text-gray-400",
+                      "text-lg/8 font-semibold"
+                    )}
+                  >
+                    {tier.name}
+                  </h3>
+                  <p className="mt-4 text-sm/6 text-gray-300">
+                    {tier.description}
+                  </p>
+                  <p className="mt-6 flex items-baseline gap-x-1">
+                    <span className="text-4xl font-semibold tracking-tight text-white">
+                      {tier.price}
+                    </span>
+                  </p>
+                  <ul
+                    role="list"
+                    className="mt-8 space-y-3 text-sm/6 text-gray-600"
+                  >
+                    {tier.features.map((feature: string) => (
+                      <li key={feature} className="flex gap-x-3">
+                        <CheckIcon
+                          aria-hidden="true"
+                          className="h-6 w-5 flex-none text-red-600"
+                        />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
