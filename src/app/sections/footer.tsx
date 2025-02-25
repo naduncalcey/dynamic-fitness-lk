@@ -45,7 +45,7 @@ export default function Footer() {
           aria-label="Footer"
           className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6"
         >
-          {/* {navigation.main.map((item) => (
+          {navigation.main.map((item) => (
             <a
               key={item.name}
               href={item.href}
@@ -59,7 +59,7 @@ export default function Footer() {
             >
               {item.name}
             </a>
-          ))} */}
+          ))}
         </nav>
         <div className="mt-16 flex justify-center gap-x-10">
           {navigation.social.map((item) => (

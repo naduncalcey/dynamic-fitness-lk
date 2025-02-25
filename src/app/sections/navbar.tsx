@@ -10,11 +10,12 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { useEffect, useState, useRef, useCallback } from "react";
+import Image from "next/image";
 
 // Throttle function to limit how often a function can be called
-function throttle(func: Function, delay: number) {
+function throttle<T extends (...args: unknown[]) => unknown>(func: T, delay: number) {
   let lastCall = 0;
-  return function (...args: any[]) {
+  return function (...args: Parameters<T>) {
     const now = new Date().getTime();
     if (now - lastCall < delay) {
       return;
@@ -145,9 +146,11 @@ export default function Navbar() {
                 href="#hero" 
                 onClick={() => handleNavClick("hero")}
               >
-                <img
+                <Image
                   alt="Dynamic fitness Sri Lanka"
                   src="/Logo.png"
+                  width={32}
+                  height={32}
                   className="h-8 w-auto"
                 />
               </a>
