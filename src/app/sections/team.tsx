@@ -7,8 +7,8 @@ const people = [
     role: "Co-founder",
     imageUrl:
       "nadun.jpg",
-    xUrl: "#",
-    linkedinUrl: "#",
+    xUrl: "https://www.instagram.com/_vodka_98",
+    linkedinUrl: "https://lk.linkedin.com/in/nadun-nissanka-31782b19b",
   },
   {
     name: "Pradeep Tharanga",

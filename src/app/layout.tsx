@@ -17,8 +17,61 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Dynamic Fitness (Pvt) ltd",
-  description: "Gym and fitness center at Maharagama, Colombo Sri Lanka",
+  title: "Dynamic Fitness (Pvt) Ltd | Premium Gym in Maharagama, Colombo",
+  description: "Dynamic Fitness is a premium gym and fitness center in Maharagama, Colombo, Sri Lanka. We offer personal training, group classes, and state-of-the-art equipment for all fitness levels.",
+  keywords: "gym, fitness center, personal training, Maharagama, Colombo, Sri Lanka, workout, fitness classes",
+  authors: [{ name: "Dynamic Fitness" }],
+  creator: "Dynamic Fitness",
+  publisher: "Dynamic Fitness",
+  formatDetection: {
+    email: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://dynamicfitness.lk'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Dynamic Fitness (Pvt) Ltd | Premium Gym in Maharagama",
+    description: "Premium gym and fitness center in Maharagama, Colombo, Sri Lanka with personal training and group classes.",
+    url: 'https://dynamicfitness.lk',
+    siteName: 'Dynamic Fitness',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Dynamic Fitness Gym',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Dynamic Fitness (Pvt) Ltd | Premium Gym in Maharagama",
+    description: "Premium gym and fitness center in Maharagama, Colombo, Sri Lanka",
+    images: ['/twitter-image.jpg'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/Logo.png' }
+    ],
+    apple: '/Logo.png',
+  },
+  manifest: '/site.webmanifest',
+  themeColor: '#111111',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +81,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/Logo.png" />
+        <link rel="apple-touch-icon" href="/Logo.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased`}
       >
