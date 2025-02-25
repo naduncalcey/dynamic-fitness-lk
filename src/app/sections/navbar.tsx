@@ -185,7 +185,7 @@ export default function Navbar() {
                     : "border-transparent text-gray-400 hover:border-gray-200 hover:text-gray-100"
                 }`}
               >
-                Contact
+                Community
               </a>
               <a
                 href="#team"
