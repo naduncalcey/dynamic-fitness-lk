@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/Logo.png' }
+      { url: '/Logo.svg' }
     ],
-    apple: '/Logo.png',
+    apple: '/Logo.svg',
   },
   manifest: '/site.webmanifest',
   themeColor: '#111111',
@@ -83,8 +83,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="alternate icon" href="/Logo.png" />
-        <link rel="apple-touch-icon" href="/Logo.png" />
+        <link rel="alternate icon" href="/Logo.svg" />
+        <link rel="apple-touch-icon" href="/Logo.svg" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body

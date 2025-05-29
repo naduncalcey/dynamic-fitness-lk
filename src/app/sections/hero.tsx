@@ -1,6 +1,20 @@
 "use client";
 
+import { useState } from "react";
+
 export default function Hero() {
+  const [video1Loading, setVideo1Loading] = useState(true);
+  const [video2Loading, setVideo2Loading] = useState(true);
+  const [video3Loading, setVideo3Loading] = useState(true);
+
+  const VideoSkeleton = () => (
+    <div className="aspect-[2/3] w-full rounded-xl bg-gray-800 animate-pulse shadow-lg">
+      <div className="flex items-center justify-center h-full">
+        <div className="w-12 h-12 border-4 border-gray-600 border-t-red-500 rounded-full animate-spin"></div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="bg-gray-950">
       <main>
@@ -70,12 +84,17 @@ export default function Hero() {
                 <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
                   <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                     <div className="relative">
+                      {video1Loading && <VideoSkeleton />}
                       <video
                         src="/hero/video1.mp4"
-                        className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                        className={`aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg ${
+                          video1Loading ? 'opacity-0 absolute inset-0' : 'opacity-100'
+                        }`}
                         autoPlay
                         loop
                         muted
+                        onLoadedData={() => setVideo1Loading(false)}
+                        onCanPlay={() => setVideo1Loading(false)}
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
@@ -90,12 +109,17 @@ export default function Hero() {
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
                     <div className="relative">
+                      {video2Loading && <VideoSkeleton />}
                       <video
                         src="/hero/video2.mp4"
-                        className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                        className={`aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg ${
+                          video2Loading ? 'opacity-0 absolute inset-0' : 'opacity-100'
+                        }`}
                         autoPlay
                         loop
                         muted
+                        onLoadedData={() => setVideo2Loading(false)}
+                        onCanPlay={() => setVideo2Loading(false)}
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
@@ -110,12 +134,17 @@ export default function Hero() {
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
                     <div className="relative">
+                      {video3Loading && <VideoSkeleton />}
                       <video
                         src="/hero/video3.mp4"
-                        className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                        className={`aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg ${
+                          video3Loading ? 'opacity-0 absolute inset-0' : 'opacity-100'
+                        }`}
                         autoPlay
                         loop
                         muted
+                        onLoadedData={() => setVideo3Loading(false)}
+                        onCanPlay={() => setVideo3Loading(false)}
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
                     </div>

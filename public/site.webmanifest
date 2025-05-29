@@ -3,7 +3,7 @@
   "short_name": "DynamicFit",
   "icons": [
     {
-      "src": "/Logo.png",
+      "src": "/Logo.svg",
       "sizes": "192x192",
       "type": "image/png"
     }

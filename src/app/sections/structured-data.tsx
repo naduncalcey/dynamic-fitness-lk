@@ -9,7 +9,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
     "name": "Dynamic Fitness (Pvt) Ltd",
-    "image": "https://dynamicfitness.lk/Logo.png",
+    "image": "https://dynamicfitness.lk/",
     "url": "https://dynamicfitness.lk",
     "telephone": "+94XXXXXXXXX", // Replace with actual phone number
     "address": {

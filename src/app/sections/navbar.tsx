@@ -148,7 +148,7 @@ export default function Navbar() {
               >
                 <Image
                   alt="Dynamic fitness Sri Lanka"
-                  src="/Logo.png"
+                  src="/Logo.svg"
                   width={32}
                   height={32}
                   className="h-8 w-auto"
@@ -206,8 +206,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <div className="shrink-0">
               <a
-                href="#cta"
-                onClick={() => handleNavClick("cta")}
+                href="tel:+94772403117"
                 className="relative inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
               >
                 <PhoneIcon aria-hidden="true" className="-ml-0.5 h-5 w-5" />
