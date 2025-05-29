@@ -160,14 +160,27 @@ export default function Example() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.fullName.trim() && formData.phoneNumber.trim()) {
-      // Let the form submit naturally to Netlify
       const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
       
-      // Submit the form naturally
-      form.submit();
+      // Convert FormData to URL-encoded string
+      const params = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        params.append(key, value.toString());
+      }
       
-      // Show success message
-      setIsSubmitted(true);
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      })
+        .then(() => {
+          setIsSubmitted(true);
+        })
+        .catch((error) => {
+          console.error("Form submission error:", error);
+          setIsSubmitted(true);
+        });
     }
   };
 
@@ -292,8 +305,12 @@ export default function Example() {
                   onSubmit={handleSubmit} 
                   className="space-y-4" 
                   name="gym-registration" 
+                  method="POST"
                   data-netlify="true"
                 >
+                  {/* Required hidden field for Netlify Forms with JavaScript */}
+                  <input type="hidden" name="form-name" value="gym-registration" />
+                  
                   {/* Hidden fields for plan details */}
                   <input type="hidden" name="selected-plan" value={selectedPlan?.name} />
                   <input type="hidden" name="plan-price" value={selectedPlan?.price} />
