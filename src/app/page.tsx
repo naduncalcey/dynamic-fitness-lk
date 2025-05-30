@@ -6,6 +6,7 @@ import Team from "./sections/team";
 import Footer from "./sections/footer";
 import CTA from "./sections/cta";
 import Hero from "./sections/hero";
+import Brands from "./sections/brands";
 import StructuredData from "./sections/structured-data";
 
 export const metadata: Metadata = {
@@ -24,6 +25,9 @@ export default function Home() {
         <Navbar />
         <section id="hero">
           <Hero />
+        </section>
+        <section id="brands" className="scroll-mt-16">
+          <Brands />
         </section>
         <section id="pricing" className="scroll-mt-16">
           <Pricing />

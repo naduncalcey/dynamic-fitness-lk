@@ -160,19 +160,22 @@ export default function Example() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.fullName.trim() && formData.phoneNumber.trim()) {
-      const form = e.target as HTMLFormElement;
-      const formData = new FormData(form);
+      // Prepare data for Sheet-Best
+      const submissionData = {
+        Name: formData.fullName,
+        Phone: formData.phoneNumber,
+        Plan: selectedPlan?.name,
+        Price: selectedPlan?.price,
+        Type: tab,
+        Timestamp: new Date().toISOString()
+      };
       
-      // Convert FormData to URL-encoded string
-      const params = new URLSearchParams();
-      for (const [key, value] of formData.entries()) {
-        params.append(key, value.toString());
-      }
-      
-      fetch("/", {
+      fetch(process.env.NEXT_PUBLIC_SHEET_BEST_API!, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(),
+        headers: { 
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submissionData),
       })
         .then(() => {
           setIsSubmitted(true);
@@ -303,19 +306,8 @@ export default function Example() {
               {!isSubmitted ? (
                 <form 
                   onSubmit={handleSubmit} 
-                  className="space-y-4" 
-                  name="gym-registration" 
-                  method="POST"
-                  data-netlify="true"
+                  className="space-y-4"
                 >
-                  {/* Required hidden field for Netlify Forms with JavaScript */}
-                  <input type="hidden" name="form-name" value="gym-registration" />
-                  
-                  {/* Hidden fields for plan details */}
-                  <input type="hidden" name="selected-plan" value={selectedPlan?.name} />
-                  <input type="hidden" name="plan-price" value={selectedPlan?.price} />
-                  <input type="hidden" name="plan-type" value={tab} />
-
                   <div>
                     <label htmlFor="fullName" className="block text-sm font-medium text-gray-300 mb-2">
                       Full Name
@@ -325,7 +317,6 @@ export default function Example() {
                       <input
                         type="text"
                         id="fullName"
-                        name="name"
                         required
                         value={formData.fullName}
                         onChange={(e) => handleInputChange("fullName", e.target.value)}
@@ -344,7 +335,6 @@ export default function Example() {
                       <input
                         type="tel"
                         id="phoneNumber"
-                        name="phone"
                         required
                         value={formData.phoneNumber}
                         onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
@@ -426,7 +416,7 @@ function PricingCard({ tier, index, onGetStarted }: { tier: PricingTier; index: 
         )}
       >
         <div className="mb-5">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-3">
             <h3 className={cn(
               "text-xl font-semibold",
               tier.mostPopular ? "text-red-600" : "text-gray-400"

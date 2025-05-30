@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const people = [
   {
     name: "Nadun Nissanka",
-    role: "Co-founder",
+    role: "Founder/CEO",
     imageUrl: "nadun.jpg",
     xUrl: "https://www.instagram.com/_vodka_98",
     linkedinUrl: "https://lk.linkedin.com/in/nadun-nissanka-31782b19b",
@@ -57,6 +57,14 @@ const TeamMemberCard = ({ person }: { person: typeof people[0] }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Only expand if we're not clicking on a social link
+    const target = e.target as HTMLElement;
+    if (!target.closest('a')) {
+      setIsExpanded(!isExpanded);
+    }
+  };
+
   return (
     <motion.div
       className={cn(
@@ -69,11 +77,11 @@ const TeamMemberCard = ({ person }: { person: typeof people[0] }) => {
       transition={{ duration: 0.5 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onClick={() => setIsExpanded(!isExpanded)}
+      onClick={handleCardClick}
     >
       {/* Background gradient */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-600/20 z-0"
+        className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-red-600/20 z-0"
         animate={{
           opacity: isHovered ? 0.8 : 0.4
         }}
@@ -104,7 +112,7 @@ const TeamMemberCard = ({ person }: { person: typeof people[0] }) => {
           className="text-xl font-semibold tracking-tight text-white"
           animate={{
             y: isHovered ? -2 : 0,
-            color: isHovered ? "#3b82f6" : "#ffffff"
+            color: isHovered ? "#dc2626" : "#ffffff"
           }}
         >
           {person.name}
@@ -134,7 +142,7 @@ const TeamMemberCard = ({ person }: { person: typeof people[0] }) => {
 
         {/* Social links */}
         <motion.div 
-          className="mt-4 flex items-center gap-3"
+          className="mt-4 flex items-center gap-3 relative z-20"
           animate={{
             y: isExpanded ? 0 : 0
           }}
@@ -143,8 +151,12 @@ const TeamMemberCard = ({ person }: { person: typeof people[0] }) => {
             href={person.xUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-blue-500 transition-colors"
-            onClick={(e) => e.stopPropagation()}
+            className="text-gray-400 hover:text-red-500 transition-colors p-1 rounded-md hover:bg-gray-800/50"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              window.open(person.xUrl, '_blank');
+            }}
           >
             <span className="sr-only">Instagram</span>
             <Instagram size={18} />
@@ -155,8 +167,12 @@ const TeamMemberCard = ({ person }: { person: typeof people[0] }) => {
               href={person.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-blue-500 transition-colors"
-              onClick={(e) => e.stopPropagation()}
+              className="text-gray-400 hover:text-red-500 transition-colors p-1 rounded-md hover:bg-gray-800/50"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                window.open(person.linkedinUrl, '_blank');
+              }}
             >
               <span className="sr-only">LinkedIn</span>
               <Linkedin size={18} />
@@ -166,7 +182,7 @@ const TeamMemberCard = ({ person }: { person: typeof people[0] }) => {
 
         {/* Expand indicator */}
         <motion.div 
-          className="absolute bottom-4 right-4 p-1 rounded-full bg-gray-800/50"
+          className="absolute bottom-4 right-4 p-1 rounded-full bg-gray-800/50 z-10"
           animate={{
             rotate: isExpanded ? 180 : 0,
             opacity: isHovered ? 1 : 0.6
