@@ -99,6 +99,13 @@ export default function RootLayout({
             `
           }}
         />
+        
+        {/* Google AdSense */}
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3009107657854349"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased`}
