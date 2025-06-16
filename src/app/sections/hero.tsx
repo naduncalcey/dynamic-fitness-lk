@@ -64,6 +64,14 @@ export default function Hero() {
             <div className="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
               <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                 <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
+                  <a href="https://ebadge.bestweb.lk/api/v1/clicked/dynamicfitness.lk/BestWeb/2025/Rate_Us">
+                    <img
+                      src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/dynamicfitness.lk/BestWeb/2025/Rate_Us/image.png"
+                      alt="logo"
+                      width="150"
+                      height="150"
+                    />
+                  </a>
                   <h1 className="text-pretty text-5xl font-semibold tracking-tight text-white sm:text-7xl font-poppins">
                     Unleash Your Potential at Dynamic Fitness!
                   </h1>
@@ -88,7 +96,9 @@ export default function Hero() {
                       <video
                         src="/hero/video1.mp4"
                         className={`aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg ${
-                          video1Loading ? 'opacity-0 absolute inset-0' : 'opacity-100'
+                          video1Loading
+                            ? "opacity-0 absolute inset-0"
+                            : "opacity-100"
                         }`}
                         autoPlay
                         loop
@@ -113,7 +123,9 @@ export default function Hero() {
                       <video
                         src="/hero/video2.mp4"
                         className={`aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg ${
-                          video2Loading ? 'opacity-0 absolute inset-0' : 'opacity-100'
+                          video2Loading
+                            ? "opacity-0 absolute inset-0"
+                            : "opacity-100"
                         }`}
                         autoPlay
                         loop
@@ -138,7 +150,9 @@ export default function Hero() {
                       <video
                         src="/hero/video3.mp4"
                         className={`aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg ${
-                          video3Loading ? 'opacity-0 absolute inset-0' : 'opacity-100'
+                          video3Loading
+                            ? "opacity-0 absolute inset-0"
+                            : "opacity-100"
                         }`}
                         autoPlay
                         loop
