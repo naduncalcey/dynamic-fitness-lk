@@ -63,12 +63,8 @@
 
 @layer base {
   * {
-    @apply border-border;
-  }
-  html {
-    @apply bg-black;
-  }
-  body {
-    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 }

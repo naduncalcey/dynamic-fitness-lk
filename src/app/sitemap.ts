@@ -4,14 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dynamicfitness.lk";
 
   // Define your routes here
-  const routes = [
-    "",
-    "/about",
-    "/contact",
-    "/services",
-    "/membership",
-    "/schedule",
-  ];
+  const routes = ["/"];
 
   // Current date for lastModified
   const date = new Date();
