@@ -1,6 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import StructuredData from "./sections/structured-data";
+import Navigation from "./components/navigation";
+import HeroSection from "./sections/heroSection";
 
 export const metadata: Metadata = {
   title: "Dynamic Fitness | Premium Gym in Maharagama, Colombo",
@@ -15,6 +17,10 @@ export default function Home() {
     <>
       <StructuredData />
       <main>
+        <Navigation />
+        <div className="px-4">
+        <HeroSection />
+        </div>
       </main>
     </>
   );
