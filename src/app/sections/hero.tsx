@@ -68,8 +68,8 @@ export default function Hero() {
                     <img
                       src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/dynamicfitness.lk/BestWeb/2025/Rate_Us/image.png"
                       alt="logo"
-                      width="200"
-                      height="200"
+                      width="170"
+                      height="170"
                     />
                   </a>
                   <h1 className="text-pretty text-5xl font-semibold tracking-tight text-white sm:text-7xl font-poppins">
